@@ -76,6 +76,10 @@ export function WhiteboardPage() {
     sync.broadcast("patch:whiteboard", next);
   }, []);
 
+  // Atualiza só o estado local (sem persistir) — usado durante arrasto.
+  const commitLocal = useCallback((next: BoardState) => setBoard(next), []);
+  const dirtyRef = useRef(false);
+
   // converte coordenada de tela → mundo (considerando pan+zoom)
   const toWorld = useCallback(
     (clientX: number, clientY: number) => {
@@ -125,7 +129,8 @@ export function WhiteboardPage() {
     if (dragRef.current) {
       const { id, dx, dy, resize } = dragRef.current;
       const { x, y } = toWorld(e.clientX, e.clientY);
-      commit({
+      dirtyRef.current = true;
+      commitLocal({
         ...board,
         elements: board.elements.map((el) => {
           if (el.id !== id) return el;
@@ -149,6 +154,9 @@ export function WhiteboardPage() {
       if (drawing.points.length > 1) commit({ ...board, strokes: [...board.strokes, drawing] });
       setDrawing(null);
     }
+    // persiste uma única vez ao fim do arrasto
+    if (dragRef.current && dirtyRef.current) commit(board);
+    dirtyRef.current = false;
     dragRef.current = null;
     panRef.current = null;
   };

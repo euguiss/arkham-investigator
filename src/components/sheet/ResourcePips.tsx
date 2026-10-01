@@ -49,7 +49,7 @@ export function ResourcePips({ label, pool, tone, editable, onChange }: Props) {
         </div>
       ) : (
         <div className="pips__bar">
-          <div className="pips__bar-fill" style={{ width: `${(pool.current / pool.max) * 100}%` }} />
+          <div className="pips__bar-fill" style={{ width: `${pool.max > 0 ? (pool.current / pool.max) * 100 : 0}%` }} />
         </div>
       )}
 

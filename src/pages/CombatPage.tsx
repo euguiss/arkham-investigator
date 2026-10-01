@@ -33,7 +33,7 @@ export function CombatPage() {
   const [ruler, setRuler] = useState<{ x1: number; y1: number; x2: number; y2: number } | null>(null);
 
   const svgRef = useRef<SVGSVGElement>(null);
-  const dragRef = useRef<{ id: string } | null>(null);
+  const dragRef = useRef<{ id: string; cx?: number; cy?: number } | null>(null);
   const panRef = useRef<{ x: number; y: number; vx: number; vy: number } | null>(null);
 
   const toWorld = useCallback(
@@ -88,7 +88,15 @@ export function CombatPage() {
     if (drawing) { setDrawing({ points: [...drawing.points, { x, y }] }); return; }
     if (ruler) { setRuler({ ...ruler, x2: x, y2: y }); return; }
     if (dragRef.current) {
-      combat.patchToken(dragRef.current.id, { cx: Math.round(x / CELL), cy: Math.round(y / CELL) });
+      // atualiza posição localmente; persiste no pointer-up
+      const id = dragRef.current.id;
+      const cx = Math.round(x / CELL), cy = Math.round(y / CELL);
+      const t = combat.tokens[id];
+      if (t && (t.cx !== cx || t.cy !== cy)) {
+        dragRef.current.cx = cx;
+        dragRef.current.cy = cy;
+        useCombat.setState({ tokens: { ...combat.tokens, [id]: { ...t, cx, cy } } });
+      }
       return;
     }
     if (panRef.current) {
@@ -100,6 +108,10 @@ export function CombatPage() {
     if (drawing && drawing.points.length > 1) combat.addStroke({ id: nanoid(6), points: drawing.points, color });
     setDrawing(null);
     if (ruler) setTimeout(() => setRuler(null), 1200); // some após medir
+    // persiste a posição final do token uma única vez
+    if (dragRef.current?.cx != null) {
+      combat.patchToken(dragRef.current.id, { cx: dragRef.current.cx, cy: dragRef.current.cy });
+    }
     dragRef.current = null;
     panRef.current = null;
   };
@@ -309,13 +321,13 @@ export function CombatPage() {
                     {hp && (
                       <g transform={`translate(${-r} ${-r - 12})`}>
                         <rect width={r * 2} height={5} rx={2} fill="var(--ink-900)" />
-                        <rect width={Math.max(0, (hp.current / hp.max) * r * 2)} height={5} rx={2} fill="var(--blood-500)" />
+                        <rect width={Math.max(0, hp.max > 0 ? (hp.current / hp.max) * r * 2 : 0)} height={5} rx={2} fill="var(--blood-500)" />
                       </g>
                     )}
                     {san && (
                       <g transform={`translate(${-r} ${-r - 5})`}>
                         <rect width={r * 2} height={4} rx={2} fill="var(--ink-900)" />
-                        <rect width={Math.max(0, (san.current / san.max) * r * 2)} height={4} rx={2} fill="var(--cerulean-500)" />
+                        <rect width={Math.max(0, san.max > 0 ? (san.current / san.max) * r * 2 : 0)} height={4} rx={2} fill="var(--cerulean-500)" />
                       </g>
                     )}
 
