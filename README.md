@@ -67,3 +67,12 @@ export const sync: SyncBackend = new SupabaseSyncBackend();
 ```
 
 Nenhum módulo precisa mudar — todos consomem a mesma interface.
+
+## Publicação (GitHub Pages)
+
+O deploy é automático via GitHub Actions (`.github/workflows/deploy.yml`) a cada
+push na `main`. O `base` do Vite é definido dinamicamente como `/<nome-do-repo>/`.
+
+Site: **https://euguiss.github.io/cocsite/**
+
+Para publicar: em *Settings → Pages → Source*, selecione **GitHub Actions**.
