@@ -1,0 +1,5 @@
+.connections { height: calc(100% - 82px); padding: var(--sp-4); }
+.connections-svg { width: 100%; height: 100%; background: radial-gradient(ellipse at center, var(--ink-800), var(--ink-900)); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); }
+.connections-node { cursor: pointer; }
+.connections-node circle { transition: fill var(--transition); }
+.connections-empty { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-500); font-family: var(--font-serif); font-style: italic; font-size: var(--fs-lg); }

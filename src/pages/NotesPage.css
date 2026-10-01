@@ -1,0 +1,39 @@
+.notes { display: grid; grid-template-columns: 240px 1fr; height: calc(100% - 82px); }
+.notes-tree { background: var(--ink-850); border-right: 1px solid var(--border-subtle); padding: var(--sp-3); overflow-y: auto; }
+.notes-folder { margin-bottom: var(--sp-3); }
+.notes-folder__name { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-400); padding: var(--sp-1) var(--sp-2); }
+.notes-item { display: block; width: 100%; text-align: left; padding: 4px var(--sp-2) 4px var(--sp-4); border-radius: var(--radius-sm); color: var(--text-300); font-family: var(--font-serif); cursor: grab; }
+.notes-item:hover { background: var(--ink-700); color: var(--text-100); }
+.notes-item.is-active { background: var(--ink-700); color: var(--amber-300); }
+
+.notes-main { display: flex; flex-direction: column; padding: var(--sp-4) var(--sp-6); overflow-y: auto; }
+.notes-toolbar { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-4); }
+.notes-title { flex: 1; background: transparent; border: none; font-family: var(--font-display); font-size: var(--fs-xl); color: var(--text-100); }
+.notes-title:focus { outline: none; }
+.notes-folder-input { width: 120px; background: var(--ink-900); border: 1px solid var(--border-strong); border-radius: var(--radius-md); color: var(--text-300); padding: var(--sp-1) var(--sp-2); font-size: var(--fs-sm); }
+.notes-mode { display: flex; border: 1px solid var(--border-strong); border-radius: var(--radius-md); overflow: hidden; }
+.notes-mode button { padding: var(--sp-1) var(--sp-3); color: var(--text-300); font-size: var(--fs-sm); }
+.notes-mode button.is-active { background: var(--amber-700); color: var(--text-100); }
+
+.notes-editor { flex: 1; min-height: 300px; background: var(--ink-900); border: 1px solid var(--border-strong); border-radius: var(--radius-md); color: var(--text-200); padding: var(--sp-4); font-family: var(--font-mono); font-size: var(--fs-sm); line-height: 1.6; resize: none; }
+.notes-editor:focus { outline: none; border-color: var(--amber-700); }
+
+.notes-render { flex: 1; font-family: var(--font-serif); font-size: var(--fs-md); line-height: 1.7; color: var(--text-200); }
+.notes-empty-state { color: var(--text-500); font-family: var(--font-serif); font-style: italic; margin: auto; }
+
+/* markdown */
+.md .md-h1 { font-size: var(--fs-xl); margin: var(--sp-3) 0 var(--sp-2); color: var(--text-100); }
+.md .md-h2 { font-size: var(--fs-lg); margin: var(--sp-3) 0 var(--sp-2); color: var(--amber-300); }
+.md .md-h3 { font-size: var(--fs-md); margin: var(--sp-2) 0; color: var(--text-100); }
+.md p { margin: var(--sp-2) 0; }
+.md .md-ul { margin: var(--sp-2) 0 var(--sp-2) var(--sp-5); }
+.md .md-code { font-family: var(--font-mono); background: var(--ink-900); padding: 1px 5px; border-radius: var(--radius-sm); color: var(--amber-300); font-size: 0.9em; }
+.md .md-pre { font-family: var(--font-mono); background: var(--ink-900); padding: var(--sp-3); border-radius: var(--radius-md); overflow-x: auto; border: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+.md .md-link { color: var(--amber-400); border-bottom: 1px dashed var(--amber-600); cursor: pointer; }
+.md .md-link:hover { color: var(--amber-300); background: var(--amber-glow); }
+.md .md-link--missing { color: var(--blood-400); border-color: var(--blood-500); }
+
+.notes-backlinks { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--border-subtle); }
+.notes-backlinks h4 { font-size: var(--fs-sm); color: var(--text-400); margin-bottom: var(--sp-2); }
+.notes-backlink { display: inline-block; margin: 2px; padding: 4px 12px; border-radius: var(--radius-pill); background: var(--ink-700); border: 1px solid var(--border-strong); color: var(--amber-300); font-family: var(--font-serif); font-size: var(--fs-sm); }
+.notes-backlink:hover { border-color: var(--amber-600); }
