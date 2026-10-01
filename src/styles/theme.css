@@ -1,0 +1,229 @@
+/* =============================================================
+   ARKHAM INVESTIGATOR — Design System
+   Estética noir / thriller / horror investigativo anos 1920.
+   ============================================================= */
+
+:root {
+  /* --- Paleta base (fundo quase preto, camadas de profundidade) --- */
+  --ink-900: #0a0908;   /* fundo mais profundo */
+  --ink-850: #0f0d0b;
+  --ink-800: #141210;   /* superfície base */
+  --ink-750: #1a1714;
+  --ink-700: #221d18;   /* cards / painéis */
+  --ink-600: #2d261f;   /* elevações */
+  --ink-500: #3a3127;   /* bordas fortes */
+  --ink-400: #4e4335;   /* bordas sutis */
+
+  /* --- Âmbar / ouro envelhecido (acento principal) --- */
+  --amber-300: #f0d79b;
+  --amber-400: #e3bd76;
+  --amber-500: #d4a24c;  /* acento primário */
+  --amber-600: #b2823a;
+  --amber-700: #8a6329;
+  --amber-glow: rgba(212, 162, 76, 0.35);
+
+  /* --- Roxo arcano (modo/área do Mestre) --- */
+  --arcane-300: #c6a9e6;
+  --arcane-400: #a97fd6;
+  --arcane-500: #8a5cc4;
+  --arcane-600: #6c40a3;
+  --arcane-700: #4e2c78;
+  --arcane-glow: rgba(138, 92, 196, 0.35);
+
+  /* --- Vermelho perigo (dano / crítico / morrendo) --- */
+  --blood-300: #e88b7d;
+  --blood-400: #d85f4e;
+  --blood-500: #b83a2b;
+  --blood-600: #8f2a1e;
+  --blood-glow: rgba(184, 58, 43, 0.4);
+
+  /* --- Verde absinto (sucesso / cura) --- */
+  --absinthe-400: #9bbf7a;
+  --absinthe-500: #74a04c;
+  --absinthe-600: #567a37;
+
+  /* --- Azul frio (sanidade / água / informação) --- */
+  --cerulean-400: #6fa5c4;
+  --cerulean-500: #4a7f9e;
+
+  /* --- Texto --- */
+  --text-100: #f4ecdd;   /* títulos / destaque — pergaminho claro */
+  --text-200: #d8ccb8;   /* corpo principal */
+  --text-300: #a99b84;   /* secundário */
+  --text-400: #7a6f5e;   /* terciário / legendas */
+  --text-500: #564e42;   /* desabilitado */
+
+  /* --- Semânticos --- */
+  --bg-app: var(--ink-900);
+  --bg-surface: var(--ink-800);
+  --bg-panel: var(--ink-700);
+  --bg-elevated: var(--ink-600);
+  --border-subtle: rgba(78, 67, 53, 0.5);
+  --border-strong: var(--ink-500);
+  --accent: var(--amber-500);
+  --accent-hover: var(--amber-400);
+  --danger: var(--blood-500);
+  --success: var(--absinthe-500);
+  --sanity: var(--cerulean-500);
+  --master: var(--arcane-500);
+
+  /* --- Tipografia --- */
+  --font-display: "Special Elite", "Courier New", monospace;        /* títulos datilografados */
+  --font-serif: "Cormorant Garamond", "EB Garamond", Georgia, serif; /* texto imersivo */
+  --font-body: "EB Garamond", Georgia, "Times New Roman", serif;    /* corpo */
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;    /* números / dados */
+
+  --fs-xs: 0.72rem;
+  --fs-sm: 0.85rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.35rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.4rem;
+  --fs-3xl: 3.2rem;
+
+  /* --- Espaçamento (escala 4px) --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* --- Raios --- */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+
+  /* --- Sombras / profundidade --- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.6);
+  --shadow-inset: inset 0 1px 0 rgba(255, 240, 210, 0.04);
+  --glow-amber: 0 0 18px var(--amber-glow);
+  --glow-arcane: 0 0 18px var(--arcane-glow);
+  --glow-blood: 0 0 18px var(--blood-glow);
+
+  /* --- Layout --- */
+  --sidebar-w: 240px;
+  --topbar-h: 56px;
+  --z-popup: 1000;
+  --z-modal: 1100;
+  --z-toast: 1200;
+
+  --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================= RESET ============================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--text-200);
+  background-color: var(--bg-app);
+  background-image:
+    radial-gradient(ellipse at top, rgba(45, 38, 31, 0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(78, 44, 120, 0.08) 0%, transparent 55%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--text-100);
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: var(--amber-400);
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--amber-glow);
+  color: var(--text-100);
+}
+
+/* Números em mono */
+.num,
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ======================= SCROLLBARS ======================= */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--ink-850);
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--ink-500);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--ink-850);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-400);
+}
+
+/* ======================= ANIMAÇÕES ======================= */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 1; }
+  50% { opacity: 0.72; }
+  52% { opacity: 1; }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px var(--blood-glow); }
+  50% { box-shadow: 0 0 22px var(--blood-glow); }
+}

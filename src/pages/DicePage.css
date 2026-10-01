@@ -1,0 +1,73 @@
+.dice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: var(--sp-5);
+  align-content: start;
+}
+.dice-history-panel { grid-column: 1 / -1; }
+
+.dice-field, .dice-bonus { display: flex; flex-direction: column; gap: var(--sp-1); margin-bottom: var(--sp-4); }
+.dice-field > span, .dice-bonus > span { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-400); }
+.dice-field input {
+  width: 120px; padding: var(--sp-2) var(--sp-3); font-size: var(--fs-lg);
+  background: var(--ink-900); border: 1px solid var(--border-strong); border-radius: var(--radius-md); color: var(--text-100);
+}
+.dice-bonus__row { display: flex; align-items: center; gap: var(--sp-3); }
+.dice-bonus__val { font-size: var(--fs-xl); min-width: 48px; text-align: center; color: var(--text-200); }
+.dice-bonus__val.is-bonus { color: var(--absinthe-400); }
+.dice-bonus__val.is-penalty { color: var(--blood-400); }
+.dice-bonus small { color: var(--text-500); font-family: var(--font-serif); font-style: italic; }
+
+.dice-step {
+  width: 34px; height: 34px; border-radius: var(--radius-md); font-size: 1.3rem;
+  background: var(--ink-800); border: 1px solid var(--border-strong); color: var(--text-200);
+}
+.dice-step:hover { border-color: var(--amber-600); color: var(--amber-300); }
+
+.btn {
+  padding: var(--sp-2) var(--sp-4); border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong); color: var(--text-200); background: var(--ink-700);
+  font-family: var(--font-serif); font-size: var(--fs-md); transition: all var(--transition);
+}
+.btn:hover { border-color: var(--amber-600); color: var(--text-100); }
+.btn--primary {
+  background: linear-gradient(180deg, var(--amber-500), var(--amber-700));
+  color: var(--ink-900); border-color: var(--amber-700); font-family: var(--font-display); letter-spacing: 0.05em;
+}
+.btn--primary:hover { filter: brightness(1.1); color: var(--ink-900); }
+.btn--danger { background: linear-gradient(180deg, var(--blood-400), var(--blood-600)); color: var(--text-100); border-color: var(--blood-600); }
+.btn--ghost { background: transparent; }
+.btn--sm { padding: 4px 10px; font-size: var(--fs-sm); }
+
+.dice-roll-btn { width: 100%; margin-bottom: var(--sp-3); }
+.dice-thresholds { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-400); padding-top: var(--sp-2); border-top: 1px solid var(--border-subtle); }
+
+.dice-free__input { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-4); }
+.dice-free__input input {
+  flex: 1; padding: var(--sp-2) var(--sp-3); font-size: var(--fs-md);
+  background: var(--ink-900); border: 1px solid var(--border-strong); border-radius: var(--radius-md); color: var(--text-100);
+}
+.dice-quick { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.dice-chip {
+  padding: 4px 12px; border-radius: var(--radius-pill); font-size: var(--fs-sm);
+  background: var(--ink-800); border: 1px solid var(--border-strong); color: var(--text-300);
+}
+.dice-chip:hover { border-color: var(--amber-600); color: var(--amber-300); }
+
+.dice-history { display: flex; flex-direction: column; gap: 2px; max-height: 320px; overflow-y: auto; }
+.dice-empty { color: var(--text-500); font-family: var(--font-serif); font-style: italic; text-align: center; padding: var(--sp-5); }
+.dice-row {
+  display: grid; grid-template-columns: 100px 1fr auto auto; gap: var(--sp-3); align-items: center;
+  padding: var(--sp-2) var(--sp-3); border-radius: var(--radius-sm);
+}
+.dice-row:nth-child(odd) { background: rgba(0,0,0,0.15); }
+.dice-row__label { font-family: var(--font-serif); color: var(--text-200); }
+.dice-row__value { font-size: var(--fs-md); color: var(--text-100); text-align: right; }
+.dice-row__level { font-size: var(--fs-sm); text-align: right; min-width: 110px; }
+.dice-row__level--critical { color: var(--amber-300); }
+.dice-row__level--extreme { color: var(--absinthe-400); }
+.dice-row__level--hard { color: var(--cerulean-400); }
+.dice-row__level--regular { color: var(--text-200); }
+.dice-row__level--fail { color: var(--text-400); }
+.dice-row__level--fumble { color: var(--blood-300); }

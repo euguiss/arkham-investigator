@@ -1,0 +1,28 @@
+.pips { background: var(--ink-800); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--sp-3); }
+.pips__head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--sp-2); }
+.pips__label { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-400); }
+.pips__count { font-size: var(--fs-lg); color: var(--text-100); }
+.pips__max { font-size: var(--fs-sm); color: var(--text-500); }
+
+.pips__track { display: flex; flex-wrap: wrap; gap: 3px; }
+.pips__pip {
+  width: 13px; height: 13px; border-radius: 50%;
+  background: var(--ink-900); border: 1px solid var(--border-strong); transition: all var(--transition);
+}
+.pips__pip.is-filled { box-shadow: 0 0 5px currentColor; }
+
+.pips--hp .pips__pip.is-filled { background: var(--blood-500); border-color: var(--blood-400); color: var(--blood-500); }
+.pips--san .pips__pip.is-filled { background: var(--cerulean-500); border-color: var(--cerulean-400); color: var(--cerulean-500); }
+.pips--mp .pips__pip.is-filled { background: var(--arcane-500); border-color: var(--arcane-400); color: var(--arcane-500); }
+.pips--luck .pips__pip.is-filled { background: var(--amber-500); border-color: var(--amber-400); color: var(--amber-500); }
+
+.pips__bar { height: 10px; background: var(--ink-900); border-radius: var(--radius-pill); overflow: hidden; border: 1px solid var(--border-strong); }
+.pips__bar-fill { height: 100%; transition: width var(--transition); }
+.pips--hp .pips__bar-fill { background: linear-gradient(90deg, var(--blood-600), var(--blood-400)); }
+.pips--san .pips__bar-fill { background: linear-gradient(90deg, var(--cerulean-500), var(--cerulean-400)); }
+.pips--mp .pips__bar-fill { background: linear-gradient(90deg, var(--arcane-600), var(--arcane-400)); }
+.pips--luck .pips__bar-fill { background: linear-gradient(90deg, var(--amber-600), var(--amber-400)); }
+
+.pips__controls { display: flex; gap: var(--sp-2); margin-top: var(--sp-2); }
+.pips__btn { flex: 1; padding: 2px; border-radius: var(--radius-sm); background: var(--ink-700); border: 1px solid var(--border-strong); color: var(--text-300); font-size: 1.1rem; line-height: 1; }
+.pips__btn:hover { border-color: var(--amber-600); color: var(--amber-300); }

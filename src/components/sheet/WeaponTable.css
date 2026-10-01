@@ -1,0 +1,39 @@
+.weapons { display: flex; flex-direction: column; gap: 2px; }
+.weapons__header, .weapon-row {
+  display: grid; grid-template-columns: 1fr 44px 44px 44px 90px 90px 24px; gap: var(--sp-2); align-items: center;
+}
+.weapons__header { font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-500); padding: 0 var(--sp-2) var(--sp-1); }
+.weapons__header span { text-align: center; }
+.weapons__header span:first-child { text-align: left; }
+
+.weapon-row { padding: 4px var(--sp-2); border-radius: var(--radius-sm); }
+.weapon-row:nth-child(even) { background: rgba(0,0,0,0.14); }
+.weapon-row.is-empty { opacity: 0.72; }
+
+.weapon-name { font-family: var(--font-serif); font-size: var(--fs-md); color: var(--text-200); }
+.weapon-name-input { background: var(--ink-900); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-100); padding: 2px 6px; }
+
+.weapon-hit {
+  text-align: center; background: var(--ink-800); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); color: var(--text-100); padding: 4px 0;
+}
+.weapon-hit:hover:not(:disabled) { border-color: var(--amber-600); color: var(--amber-300); }
+.weapon-hit:disabled { color: var(--text-500); cursor: not-allowed; }
+
+.weapon-dmg {
+  text-align: center; background: rgba(184,58,43,0.1); border: 1px solid var(--blood-600);
+  border-radius: var(--radius-sm); color: var(--blood-300); padding: 4px; font-size: var(--fs-sm);
+}
+.weapon-dmg:hover { background: rgba(184,58,43,0.22); }
+
+.weapon-ammo { display: flex; align-items: center; justify-content: center; gap: 2px; color: var(--text-200); }
+.weapon-ammo__sep { color: var(--text-500); font-size: var(--fs-sm); }
+.weapon-ammo .is-empty-text { color: var(--blood-400); }
+.weapon-ammo__melee { color: var(--text-500); }
+.weapon-reload { color: var(--text-400); font-size: 0.9rem; margin-left: 2px; }
+.weapon-reload:hover { color: var(--amber-400); }
+.weapon-remove { color: var(--text-500); font-size: 1.1rem; }
+.weapon-remove:hover { color: var(--blood-400); }
+
+.weapons__add { margin-top: var(--sp-2); align-self: flex-start; }
+.weapons__warn { font-family: var(--font-serif); font-style: italic; color: var(--blood-300); font-size: var(--fs-sm); margin-top: var(--sp-2); }
